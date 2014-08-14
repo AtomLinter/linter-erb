@@ -1,6 +1,6 @@
 # linter-ruby-erb
 
-This package will lint your `.erb` opened files in Atom through [ERB](http://www.ruby-lang.org/).
+This package will lint your `.erb` opened files in Atom through [erb -x](http://www.ruby-lang.org/).
 
 ## Installation
 
