@@ -3,7 +3,7 @@ Linter = require "#{linterPath}/lib/linter"
 {Range, Point, BufferedProcess} = require 'atom'
 {log, warn} = require "#{linterPath}/lib/utils"
 
-class LinterRubyErb extends Linter
+class LinterErb extends Linter
   # The syntax that the linter handles. May be a string or
   # list/tuple of strings. Names should be all lowercase.
   @syntax: ['text.html.erb']
@@ -15,7 +15,7 @@ class LinterRubyErb extends Linter
 
   executablePath: null
 
-  linterName: 'ruby-erb'
+  linterName: 'erb'
 
   # A regex pattern used to extract information from the executable's output.
   regex: '.+:(?<line>\\d+):(?<error>)(?<message>.+)'
@@ -23,11 +23,11 @@ class LinterRubyErb extends Linter
   constructor: (editor) ->
     super(editor)
 
-    atom.config.observe 'linter-ruby-erb.rubyErbExecutablePath', =>
-      @executablePath = atom.config.get 'linter-ruby-erb.rubyErbExecutablePath'
+    atom.config.observe 'linter-erb.erbExecutablePath', =>
+      @executablePath = atom.config.get 'linter-erb.erbExecutablePath'
 
   destroy: ->
-    atom.config.unobserve 'linter-ruby-erb.rubyErbExecutablePath'
+    atom.config.unobserve 'linter-erb.erbExecutablePath'
 
   lintFile: (filePath, callback) ->
     # build the command with arguments to lint the file
@@ -76,4 +76,4 @@ class LinterRubyErb extends Linter
       match.line = @editor.getLineCount()
     super(match)
 
-module.exports = LinterRubyErb
+module.exports = LinterErb

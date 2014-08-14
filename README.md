@@ -1,4 +1,4 @@
-# linter-ruby-erb
+# linter-erb
 
 This package will lint your `.erb` opened files in Atom through [erb -x](http://www.ruby-lang.org/).
 
@@ -7,13 +7,13 @@ This package will lint your `.erb` opened files in Atom through [erb -x](http://
 * Install [ruby](http://www.ruby-lang.org/)
 * `$ apm install language-ruby` (if you don't have [language-ruby](https://github.com/atom/language-ruby) installed)
 * `$ apm install linter` (if you don't have [linter](https://github.com/AtomLinter/Linter) installed)
-* `$ apm install linter-ruby-erb`
+* `$ apm install linter-erb`
 
 ## Settings
-You can configure linter-ruby-erb by editing ~/.atom/config.cson (choose Open Your Config in Atom menu):
+You can configure linter-erb by editing ~/.atom/config.cson (choose Open Your Config in Atom menu):
 ```
-'linter-ruby-erb':
-  'rubyErbExecutablePath': null # erb path. run 'which erb' to find the path
+'linter-erb':
+  'erbExecutablePath': null # erb path. run 'which erb' to find the path
 ```
 
 ## Donation

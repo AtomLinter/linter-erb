@@ -1,5 +1,5 @@
 {
-  "name": "linter-ruby-erb",
+  "name": "linter-erb",
   "linter-package": true,
   "activationEvents": [],
   "main": "./lib/init",
@@ -7,7 +7,7 @@
   "description": "Linter plugin for ERB, using erb -x",
   "repository": {
     "type": "git",
-    "url": "https://github.com/AtomLinter/linter-ruby-erb"
+    "url": "https://github.com/AtomLinter/linter-erb"
   },
   "license": "MIT",
   "engines": {

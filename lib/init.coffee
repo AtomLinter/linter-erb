@@ -1,6 +1,6 @@
 module.exports =
   configDefaults:
-    rubyErbExecutablePath: null
+    erbExecutablePath: null
 
   activate: ->
-    console.log 'activate linter-ruby-erb'
+    console.log 'activate linter-erb'
