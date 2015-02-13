@@ -60,7 +60,7 @@ class LinterErb extends Linter
       # deal with the <%= function_with trailing block do %> ... <% end %>
       if that.rubyOnRailsMode
         output = output.replace(/_erbout.concat\(\((.+?do.+?)\).to_s\)/g, '\$1')
-      
+
       log 'stdout', output
       rubyProcess.process.stdin.write(output)
 
