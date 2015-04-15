@@ -25,15 +25,15 @@ class LinterErb extends Linter
   constructor: (editor) ->
     super(editor)
 
-    atom.config.observe 'linter-erb.erbExecutablePath', =>
+    @executablePathListener = atom.config.observe 'linter-erb.erbExecutablePath', =>
       @executablePath = atom.config.get 'linter-erb.erbExecutablePath'
 
-    atom.config.observe 'linter-erb.rubyOnRailsMode', =>
+    @rubyOnRailshListener = atom.config.observe 'linter-erb.rubyOnRailsMode', =>
       @rubyOnRailsMode = atom.config.get 'linter-erb.rubyOnRailsMode'
 
   destroy: ->
-    atom.config.unobserve 'linter-erb.erbExecutablePath'
-    atom.config.unobserve 'linter-erb.rubyOnRailsMode'
+    @executablePathListener.dispose()
+    @rubyOnRailshListener.dispose()
 
   lintFile: (filePath, callback) ->
     # build the command with arguments to lint the file
