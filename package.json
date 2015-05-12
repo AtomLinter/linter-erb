@@ -3,7 +3,7 @@
   "linter-package": true,
   "activationCommands": {},
   "main": "./lib/init",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Linter plugin for ERB, using erb -x",
   "repository": {
     "type": "git",
