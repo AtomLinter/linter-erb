@@ -1,7 +1,7 @@
 {
   "name": "linter-erb",
   "linter-package": true,
-  "activationEvents": [],
+  "activationCommands": {},
   "main": "./lib/init",
   "version": "0.1.0",
   "description": "Linter plugin for ERB, using erb -x",
