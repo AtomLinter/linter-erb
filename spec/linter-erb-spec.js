@@ -53,6 +53,17 @@ describe('The ERB provider for Linter', () => {
     });
   });
 
+  it('finds nothing wrong with a file with rails type blocks', () => {
+    waitsForPromise(() => {
+      const blocksFile = path.join(__dirname, 'fixtures', 'rails_blocks.erb');
+      return atom.workspace.open(blocksFile).then(editor =>
+        lint(editor).then(messages => {
+          expect(messages.length).toEqual(0);
+        })
+      );
+    });
+  });
+
   it('finds nothing wrong with a valid file', () => {
     waitsForPromise(() => {
       const goodFile = path.join(__dirname, 'fixtures', 'good.erb');
