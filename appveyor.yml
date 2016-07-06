@@ -1,25 +1,23 @@
-version: "{build}"
-os: Windows Server 2012 R2
-branches:
-  only:
-    - master
-test: off
-deploy: off
-
+### Project specific config ###
 environment:
   ruby_version: "22-x64"
 
-install:
-  - appveyor DownloadFile https://atom.io/download/windows -FileName AtomSetup.exe
-  - AtomSetup.exe /silent
-  - cd %APPVEYOR_BUILD_FOLDER%
-  - SET PATH=%LOCALAPPDATA%\atom\bin;%PATH%
+before_build:
   - SET PATH=C:\Ruby%ruby_version%\bin;%PATH%
-
-build_script:
   - ruby --version
   - erb --version
-  - apm -v
-  - apm clean
-  - apm install
-  - apm test
+
+### Generic setup follows ###
+build_script:
+  - ps: iex ((new-object net.webclient).DownloadString('https://raw.githubusercontent.com/atom/ci/master/build-package.ps1'))
+
+branches:
+  only:
+    - master
+
+version: "{build}"
+platform: x64
+clone_depth: 10
+skip_tags: true
+test: off
+deploy: off
