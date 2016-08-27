@@ -38,15 +38,10 @@ describe('The ERB provider for Linter', () => {
       waitsForPromise(() => {
         const messageText = 'unexpected keyword_in, expecting end-of-input';
         return lint(editor).then(messages => {
-          expect(messages[0].type).toBeDefined();
-          expect(messages[0].type).toEqual('Error');
-          expect(messages[0].text).toBeDefined();
-          expect(messages[0].text).toEqual(messageText);
-          expect(messages[0].filePath).toBeDefined();
-          expect(messages[0].filePath).toMatch(/.+bad\.erb$/);
-          expect(messages[0].range).toBeDefined();
-          expect(messages[0].range.length).toBeDefined();
-          expect(messages[0].range.length).toEqual(2);
+          expect(messages[0].type).toBe('Error');
+          expect(messages[0].html).not.toBeDefined();
+          expect(messages[0].text).toBe(messageText);
+          expect(messages[0].filePath).toBe(badFile);
           expect(messages[0].range).toEqual([[0, 0], [0, 32]]);
         });
       });
@@ -58,7 +53,7 @@ describe('The ERB provider for Linter', () => {
       const blocksFile = path.join(__dirname, 'fixtures', 'rails_blocks.erb');
       return atom.workspace.open(blocksFile).then(editor =>
         lint(editor).then(messages => {
-          expect(messages.length).toEqual(0);
+          expect(messages.length).toBe(0);
         })
       );
     });
@@ -69,7 +64,7 @@ describe('The ERB provider for Linter', () => {
       const goodFile = path.join(__dirname, 'fixtures', 'good.erb');
       return atom.workspace.open(goodFile).then(editor =>
         lint(editor).then(messages => {
-          expect(messages.length).toEqual(0);
+          expect(messages.length).toBe(0);
         })
       );
     });
