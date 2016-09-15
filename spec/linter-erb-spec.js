@@ -20,7 +20,7 @@ describe('The ERB provider for Linter', () => {
     const badFile = path.join(__dirname, 'fixtures', 'bad.erb');
     beforeEach(() => {
       waitsForPromise(() =>
-        atom.workspace.open(badFile).then(openEditor => {
+        atom.workspace.open(badFile).then((openEditor) => {
           editor = openEditor;
         })
       );
@@ -28,16 +28,14 @@ describe('The ERB provider for Linter', () => {
 
     it('finds at least one message', () => {
       waitsForPromise(() =>
-        lint(editor).then(messages => {
-          expect(messages.length).toBeGreaterThan(0);
-        })
+        lint(editor).then(messages => expect(messages.length).toBeGreaterThan(0))
       );
     });
 
     it('verifies the first message', () => {
       waitsForPromise(() => {
         const messageText = 'unexpected keyword_in, expecting end-of-input';
-        return lint(editor).then(messages => {
+        return lint(editor).then((messages) => {
           expect(messages[0].type).toBe('Error');
           expect(messages[0].html).not.toBeDefined();
           expect(messages[0].text).toBe(messageText);
@@ -52,9 +50,7 @@ describe('The ERB provider for Linter', () => {
     waitsForPromise(() => {
       const blocksFile = path.join(__dirname, 'fixtures', 'rails_blocks.erb');
       return atom.workspace.open(blocksFile).then(editor =>
-        lint(editor).then(messages => {
-          expect(messages.length).toBe(0);
-        })
+        lint(editor).then(messages => expect(messages.length).toBe(0))
       );
     });
   });
@@ -63,9 +59,7 @@ describe('The ERB provider for Linter', () => {
     waitsForPromise(() => {
       const goodFile = path.join(__dirname, 'fixtures', 'good.erb');
       return atom.workspace.open(goodFile).then(editor =>
-        lint(editor).then(messages => {
-          expect(messages.length).toBe(0);
-        })
+        lint(editor).then(messages => expect(messages.length).toBe(0))
       );
     });
   });
