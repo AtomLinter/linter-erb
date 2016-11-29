@@ -2,7 +2,7 @@
 
 import * as path from 'path';
 
-const lint = require(path.join('..', 'lib', 'index.js')).provideLinter().lint;
+const lint = require('../lib/index.js').provideLinter().lint;
 
 describe('The ERB provider for Linter', () => {
   beforeEach(() => {
@@ -10,7 +10,7 @@ describe('The ERB provider for Linter', () => {
     waitsForPromise(() => {
       atom.packages.activatePackage('linter-erb');
       return atom.packages.activatePackage('language-ruby').then(() =>
-        atom.workspace.open(path.join(__dirname, 'fixtures', 'good.erb'))
+        atom.workspace.open(path.join(__dirname, 'fixtures', 'good.erb')),
       );
     });
   });
@@ -22,13 +22,13 @@ describe('The ERB provider for Linter', () => {
       waitsForPromise(() =>
         atom.workspace.open(badFile).then((openEditor) => {
           editor = openEditor;
-        })
+        }),
       );
     });
 
     it('finds at least one message', () => {
       waitsForPromise(() =>
-        lint(editor).then(messages => expect(messages.length).toBeGreaterThan(0))
+        lint(editor).then(messages => expect(messages.length).toBeGreaterThan(0)),
       );
     });
 
@@ -50,7 +50,7 @@ describe('The ERB provider for Linter', () => {
     waitsForPromise(() => {
       const blocksFile = path.join(__dirname, 'fixtures', 'rails_blocks.erb');
       return atom.workspace.open(blocksFile).then(editor =>
-        lint(editor).then(messages => expect(messages.length).toBe(0))
+        lint(editor).then(messages => expect(messages.length).toBe(0)),
       );
     });
   });
@@ -59,7 +59,7 @@ describe('The ERB provider for Linter', () => {
     waitsForPromise(() => {
       const goodFile = path.join(__dirname, 'fixtures', 'good.erb');
       return atom.workspace.open(goodFile).then(editor =>
-        lint(editor).then(messages => expect(messages.length).toBe(0))
+        lint(editor).then(messages => expect(messages.length).toBe(0)),
       );
     });
   });
