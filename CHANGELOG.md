@@ -1,7 +1,36 @@
 # Change Log
 
-## [1.0.2](https://github.com/AtomLinter/linter-erb/tree/1.0.2) (2016-02-03)
-[Full Changelog](https://github.com/AtomLinter/linter-erb/compare/v1.0.1...1.0.2)
+## [v1.0.3](https://github.com/AtomLinter/linter-erb/tree/v1.0.3) (2016-11-29)
+[Full Changelog](https://github.com/AtomLinter/linter-erb/compare/v1.0.2...v1.0.3)
+
+**Implemented enhancements:**
+
+- Update dependencies to enable Greenkeeper 🌴 [\#87](https://github.com/AtomLinter/linter-erb/pull/87) ([greenkeeper[bot]](https://github.com/integration/greenkeeper))
+- Update eslint to version 3.5.0 🚀 [\#80](https://github.com/AtomLinter/linter-erb/pull/80) ([greenkeeperio-bot](https://github.com/greenkeeperio-bot))
+- Update atom-linter to version 8.0.0 🚀 [\#76](https://github.com/AtomLinter/linter-erb/pull/76) ([greenkeeperio-bot](https://github.com/greenkeeperio-bot))
+- Update CI configuration [\#64](https://github.com/AtomLinter/linter-erb/pull/64) ([Arcanemagus](https://github.com/Arcanemagus))
+- Update atom-linter to version 5.0.1 🚀 [\#53](https://github.com/AtomLinter/linter-erb/pull/53) ([greenkeeperio-bot](https://github.com/greenkeeperio-bot))
+- Update eslint-config-airbnb-base to version 3.0.0 🚀 [\#51](https://github.com/AtomLinter/linter-erb/pull/51) ([greenkeeperio-bot](https://github.com/greenkeeperio-bot))
+- Move to eslint-config-airbnb-base [\#50](https://github.com/AtomLinter/linter-erb/pull/50) ([Arcanemagus](https://github.com/Arcanemagus))
+- Update eslint-config-airbnb to version 7.0.0 🚀 [\#38](https://github.com/AtomLinter/linter-erb/pull/38) ([greenkeeperio-bot](https://github.com/greenkeeperio-bot))
+- eslint-config-airbnb@6.2.0 [\#34](https://github.com/AtomLinter/linter-erb/pull/34) ([greenkeeperio-bot](https://github.com/greenkeeperio-bot))
+- eslint@2.4.0 breaks build 🚨 [\#33](https://github.com/AtomLinter/linter-erb/pull/33) ([greenkeeperio-bot](https://github.com/greenkeeperio-bot))
+- Update eslint to version 2.2.0 🚀 [\#27](https://github.com/AtomLinter/linter-erb/pull/27) ([greenkeeperio-bot](https://github.com/greenkeeperio-bot))
+- atom-linter@4.5.1 breaks build 🚨 [\#26](https://github.com/AtomLinter/linter-erb/pull/26) ([greenkeeperio-bot](https://github.com/greenkeeperio-bot))
+- Update babel-eslint to version 5.0.0 🚀 [\#24](https://github.com/AtomLinter/linter-erb/pull/24) ([greenkeeperio-bot](https://github.com/greenkeeperio-bot))
+- Update atom-package-deps to version 4.0.1 🚀 [\#23](https://github.com/AtomLinter/linter-erb/pull/23) ([greenkeeperio-bot](https://github.com/greenkeeperio-bot))
+- atom-package-deps@3.0.8 breaks build 🚨 [\#19](https://github.com/AtomLinter/linter-erb/pull/19) ([greenkeeperio-bot](https://github.com/greenkeeperio-bot))
+- Update eslint-config-airbnb to version 5.0.0 🚀 [\#18](https://github.com/AtomLinter/linter-erb/pull/18) ([greenkeeperio-bot](https://github.com/greenkeeperio-bot))
+
+**Fixed bugs:**
+
+- Typo in Readme [\#39](https://github.com/AtomLinter/linter-erb/issues/39)
+- Incorrect error [\#36](https://github.com/AtomLinter/linter-erb/issues/36)
+- Fix typos in readme file [\#41](https://github.com/AtomLinter/linter-erb/pull/41) ([ricardograca](https://github.com/ricardograca))
+- Fix incorrect error when dealing with rails blocks in some cases [\#40](https://github.com/AtomLinter/linter-erb/pull/40) ([ricardograca](https://github.com/ricardograca))
+
+## [v1.0.2](https://github.com/AtomLinter/linter-erb/tree/v1.0.2) (2016-02-03)
+[Full Changelog](https://github.com/AtomLinter/linter-erb/compare/v1.0.1...v1.0.2)
 
 **Fixed bugs:**
 
@@ -24,13 +53,14 @@
 ## [v1.0.0](https://github.com/AtomLinter/linter-erb/tree/v1.0.0) (2016-01-12)
 [Full Changelog](https://github.com/AtomLinter/linter-erb/compare/v0.1.1...v1.0.0)
 
+**Implemented enhancements:**
+
+- Rewrite for new Linter API [\#12](https://github.com/AtomLinter/linter-erb/pull/12) ([Arcanemagus](https://github.com/Arcanemagus))
+
 **Fixed bugs:**
 
 - Upcoming linter changes [\#9](https://github.com/AtomLinter/linter-erb/issues/9)
 - Config.unobserve is deprecated. [\#7](https://github.com/AtomLinter/linter-erb/issues/7)
-
-**Merged pull requests:**
-
 - Rewrite for new Linter API [\#12](https://github.com/AtomLinter/linter-erb/pull/12) ([Arcanemagus](https://github.com/Arcanemagus))
 
 ## [v0.1.1](https://github.com/AtomLinter/linter-erb/tree/v0.1.1) (2015-05-12)
