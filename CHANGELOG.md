@@ -1,5 +1,20 @@
 # Change Log
 
+## [v1.0.4](https://github.com/AtomLinter/linter-erb/tree/v1.0.4) (2017-03-18)
+[Full Changelog](https://github.com/AtomLinter/linter-erb/compare/v1.0.3...v1.0.4)
+
+**Implemented enhancements:**
+
+- Update CI Configuration [\#93](https://github.com/AtomLinter/linter-erb/pull/93) ([Arcanemagus](https://github.com/Arcanemagus))
+- Update atom-linter to the latest version 🚀 [\#91](https://github.com/AtomLinter/linter-erb/pull/91) ([greenkeeper[bot]](https://github.com/integration/greenkeeper))
+- Update dependencies to enable Greenkeeper 🌴 [\#89](https://github.com/AtomLinter/linter-erb/pull/89) ([greenkeeper[bot]](https://github.com/integration/greenkeeper))
+
+**Fixed bugs:**
+
+- False "unexpected '\)'" errors flagged [\#77](https://github.com/AtomLinter/linter-erb/issues/77)
+- Update CI Configuration [\#93](https://github.com/AtomLinter/linter-erb/pull/93) ([Arcanemagus](https://github.com/Arcanemagus))
+- Pass fileDir as ‘cwd’ to ruby process. [\#92](https://github.com/AtomLinter/linter-erb/pull/92) ([jmfederico](https://github.com/jmfederico))
+
 ## [v1.0.3](https://github.com/AtomLinter/linter-erb/tree/v1.0.3) (2016-11-29)
 [Full Changelog](https://github.com/AtomLinter/linter-erb/compare/v1.0.2...v1.0.3)
 
@@ -34,7 +49,7 @@
 
 **Fixed bugs:**
 
-- Fix ERB trim mode [\#17](https://github.com/AtomLinter/linter-erb/pull/17) ([eXprojects](https://github.com/eXprojects))
+- Fix ERB trim mode [\#17](https://github.com/AtomLinter/linter-erb/pull/17) ([steveteuber](https://github.com/steveteuber))
 
 ## [v1.0.1](https://github.com/AtomLinter/linter-erb/tree/v1.0.1) (2016-02-01)
 [Full Changelog](https://github.com/AtomLinter/linter-erb/compare/v1.0.0...v1.0.1)
