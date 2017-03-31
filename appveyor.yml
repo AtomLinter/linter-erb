@@ -10,7 +10,7 @@ before_build:
 
 ### Generic setup follows ###
 build_script:
-  - ps: iex ((new-object net.webclient).DownloadString('https://raw.githubusercontent.com/Arcanemagus/ci/fix-embedded-node-use/build-package.ps1'))
+  - ps: iex ((new-object net.webclient).DownloadString('https://raw.githubusercontent.com/Arcanemagus/ci/fix-appveyor-npm-output/build-package.ps1'))
 
 branches:
   only:
