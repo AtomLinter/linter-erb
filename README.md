@@ -41,8 +41,9 @@ are available:
     `ruby`.
 
 *   `trimMode`: Select the trim mode used by ERB when generating the code
-    before sending off to Ruby for checking. Defaults to no trimming. For a
-    full description of what the options mean see [the documentation][erb-docs].
+    before sending off to Ruby for checking. Defaults to `-` for out-of-the-box
+    compatibility with Rails. For a full description of what the options mean
+    see [the documentation][erb-docs].
 
     _**Note**_: Modes other than `None` _may_ cause the error line numbers to
     not match the source line numbers.
