@@ -1,5 +1,12 @@
 # Change Log
 
+## [v1.1.0](https://github.com/AtomLinter/linter-erb/tree/v1.0.5) (2017-04-11)
+[Full Changelog](https://github.com/AtomLinter/linter-erb/compare/v1.0.4...v1.1.0)
+
+**Implemented enhancements:**
+
+- Change default trim mode [\#96](https://github.com/AtomLinter/linter-erb/pull/93) ([ricardograca](https://github.com/ricardograca))
+
 ## [v1.0.4](https://github.com/AtomLinter/linter-erb/tree/v1.0.4) (2017-03-18)
 [Full Changelog](https://github.com/AtomLinter/linter-erb/compare/v1.0.3...v1.0.4)
 
