@@ -64,5 +64,8 @@
         "1.0.0": "provideLinter"
       }
     }
-  }
+  },
+  "activationHooks": [
+    "language-ruby:grammar-used"
+  ]
 }
