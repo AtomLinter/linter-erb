@@ -1,6 +1,7 @@
 ### Project specific config ###
 environment:
   ruby_version: "22-x64"
+  ATOM_LINT_WITH_BUNDLED_NODE: "false"
 
 before_build:
   - SET PATH=C:\Ruby%ruby_version%\bin;%PATH%
@@ -9,7 +10,7 @@ before_build:
 
 ### Generic setup follows ###
 build_script:
-  - ps: iex ((new-object net.webclient).DownloadString('https://raw.githubusercontent.com/atom/ci/master/build-package.ps1'))
+  - ps: iex ((new-object net.webclient).DownloadString('https://raw.githubusercontent.com/Arcanemagus/ci/fix-appveyor-npm-output/build-package.ps1'))
 
 branches:
   only:
