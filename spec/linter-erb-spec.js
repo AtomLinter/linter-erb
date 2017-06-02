@@ -1,18 +1,24 @@
 'use babel';
 
 import * as path from 'path';
+import linter from '../lib/index';
 
-const lint = require('../lib/index.js').provideLinter().lint;
+const lint = linter.provideLinter().lint;
 
 describe('The ERB provider for Linter', () => {
   beforeEach(() => {
     atom.workspace.destroyActivePaneItem();
-    waitsForPromise(() => {
-      atom.packages.activatePackage('linter-erb');
-      return atom.packages.activatePackage('language-ruby').then(() =>
-        atom.workspace.open(path.join(__dirname, 'fixtures', 'good.erb')),
-      );
-    });
+    const activationPromise = atom.packages.activatePackage('linter-erb');
+
+    waitsForPromise(() =>
+      atom.packages.activatePackage('language-ruby'),
+    );
+    waitsForPromise(() =>
+      atom.workspace.open(path.join(__dirname, 'fixtures', 'good.erb')),
+    );
+
+    atom.packages.triggerDeferredActivationHooks();
+    waitsForPromise(() => activationPromise);
   });
 
   describe('checks a file with issues and', () => {
