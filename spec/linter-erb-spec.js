@@ -3,23 +3,35 @@
 import * as path from 'path';
 import linter from '../lib/index';
 
-const lint = linter.provideLinter().lint;
 
 describe('The ERB provider for Linter', () => {
+  const lint = linter.provideLinter().lint;
+
   beforeEach(() => {
     atom.workspace.destroyActivePaneItem();
-    const activationPromise = atom.packages.activatePackage('linter-erb');
 
     waitsForPromise(() =>
       atom.packages.activatePackage('language-ruby'),
     );
+
     waitsForPromise(() =>
-      atom.workspace.open(path.join(__dirname, 'fixtures', 'good.erb')),
+        atom.workspace.open(path.join(__dirname, 'fixtures', 'good.erb')),
     );
 
+    atom.packages.triggerActivationHook('language-ruby:grammar-used');
     atom.packages.triggerDeferredActivationHooks();
-    waitsForPromise(() => activationPromise);
+    waitsForPromise(() =>
+      atom.packages.activatePackage('linter-erb'),
+    );
   });
+
+  it('should be in the packages list', () =>
+    expect(atom.packages.isPackageLoaded('linter-erb')).toBe(true),
+  );
+
+  it('should be an active package', () =>
+    expect(atom.packages.isPackageActive('linter-erb')).toBe(true),
+  );
 
   describe('checks a file with issues and', () => {
     let editor = null;
