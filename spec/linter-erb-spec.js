@@ -9,19 +9,19 @@ describe('The ERB provider for Linter', () => {
 
   beforeEach(() => {
     atom.workspace.destroyActivePaneItem();
+    const activationPromise = atom.packages.activatePackage('linter-erb');
 
     waitsForPromise(() =>
       atom.packages.activatePackage('language-ruby'),
     );
 
     waitsForPromise(() =>
-        atom.workspace.open(path.join(__dirname, 'fixtures', 'good.erb')),
+        atom.workspace.open(path.join(__dirname, 'fixtures', 'good.html.erb')),
     );
 
-    atom.packages.triggerActivationHook('language-ruby:grammar-used');
     atom.packages.triggerDeferredActivationHooks();
     waitsForPromise(() =>
-      atom.packages.activatePackage('linter-erb'),
+      activationPromise,
     );
   });
 
@@ -35,7 +35,7 @@ describe('The ERB provider for Linter', () => {
 
   describe('checks a file with issues and', () => {
     let editor = null;
-    const badFile = path.join(__dirname, 'fixtures', 'bad.erb');
+    const badFile = path.join(__dirname, 'fixtures', 'bad.html.erb');
     beforeEach(() => {
       waitsForPromise(() =>
         atom.workspace.open(badFile).then((openEditor) => {
@@ -66,7 +66,7 @@ describe('The ERB provider for Linter', () => {
 
   it('finds nothing wrong with a file with rails type blocks', () => {
     waitsForPromise(() => {
-      const blocksFile = path.join(__dirname, 'fixtures', 'rails_blocks.erb');
+      const blocksFile = path.join(__dirname, 'fixtures', 'rails_blocks.html.erb');
       return atom.workspace.open(blocksFile).then(editor =>
         lint(editor).then(messages => expect(messages.length).toBe(0)),
       );
