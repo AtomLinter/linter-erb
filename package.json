@@ -66,6 +66,7 @@
     }
   },
   "activationHooks": [
-    "language-ruby:grammar-used"
+    "language-ruby:grammar-used",
+    "language-ruby-on-rails:grammar-used"
   ]
 }
