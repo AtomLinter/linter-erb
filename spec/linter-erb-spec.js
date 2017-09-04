@@ -5,33 +5,28 @@ import linter from '../lib/index';
 
 
 describe('The ERB provider for Linter', () => {
-  const lint = linter.provideLinter().lint;
+  const { lint } = linter.provideLinter();
 
   beforeEach(() => {
     atom.workspace.destroyActivePaneItem();
     const activationPromise = atom.packages.activatePackage('linter-erb');
 
     waitsForPromise(() =>
-      atom.packages.activatePackage('language-ruby'),
-    );
+      atom.packages.activatePackage('language-ruby'));
 
     waitsForPromise(() =>
-        atom.workspace.open(path.join(__dirname, 'fixtures', 'good.html.erb')),
-    );
+      atom.workspace.open(path.join(__dirname, 'fixtures', 'good.html.erb')));
 
     atom.packages.triggerDeferredActivationHooks();
     waitsForPromise(() =>
-      activationPromise,
-    );
+      activationPromise);
   });
 
   it('should be in the packages list', () =>
-    expect(atom.packages.isPackageLoaded('linter-erb')).toBe(true),
-  );
+    expect(atom.packages.isPackageLoaded('linter-erb')).toBe(true));
 
   it('should be an active package', () =>
-    expect(atom.packages.isPackageActive('linter-erb')).toBe(true),
-  );
+    expect(atom.packages.isPackageActive('linter-erb')).toBe(true));
 
   describe('checks a file with issues and', () => {
     let editor = null;
@@ -40,14 +35,14 @@ describe('The ERB provider for Linter', () => {
       waitsForPromise(() =>
         atom.workspace.open(badFile).then((openEditor) => {
           editor = openEditor;
-        }),
-      );
+        }));
     });
 
     it('finds at least one message', () => {
       waitsForPromise(() =>
-        lint(editor).then(messages => expect(messages.length).toBeGreaterThan(0)),
-      );
+        lint(editor).then((messages) => {
+          expect(messages.length).toBeGreaterThan(0);
+        }));
     });
 
     it('verifies the first message', () => {
@@ -68,8 +63,9 @@ describe('The ERB provider for Linter', () => {
     waitsForPromise(() => {
       const blocksFile = path.join(__dirname, 'fixtures', 'rails_blocks.html.erb');
       return atom.workspace.open(blocksFile).then(editor =>
-        lint(editor).then(messages => expect(messages.length).toBe(0)),
-      );
+        lint(editor).then((messages) => {
+          expect(messages.length).toBe(0);
+        }));
     });
   });
 
@@ -77,8 +73,9 @@ describe('The ERB provider for Linter', () => {
     waitsForPromise(() => {
       const goodFile = path.join(__dirname, 'fixtures', 'good.erb');
       return atom.workspace.open(goodFile).then(editor =>
-        lint(editor).then(messages => expect(messages.length).toBe(0)),
-      );
+        lint(editor).then((messages) => {
+          expect(messages.length).toBe(0);
+        }));
     });
   });
 });
