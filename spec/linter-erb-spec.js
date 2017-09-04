@@ -1,23 +1,41 @@
 'use babel';
 
 import * as path from 'path';
+import linter from '../lib/index';
 
-const lint = require('../lib/index.js').provideLinter().lint;
 
 describe('The ERB provider for Linter', () => {
+  const lint = linter.provideLinter().lint;
+
   beforeEach(() => {
     atom.workspace.destroyActivePaneItem();
-    waitsForPromise(() => {
-      atom.packages.activatePackage('linter-erb');
-      return atom.packages.activatePackage('language-ruby').then(() =>
-        atom.workspace.open(path.join(__dirname, 'fixtures', 'good.erb')),
-      );
-    });
+    const activationPromise = atom.packages.activatePackage('linter-erb');
+
+    waitsForPromise(() =>
+      atom.packages.activatePackage('language-ruby'),
+    );
+
+    waitsForPromise(() =>
+        atom.workspace.open(path.join(__dirname, 'fixtures', 'good.html.erb')),
+    );
+
+    atom.packages.triggerDeferredActivationHooks();
+    waitsForPromise(() =>
+      activationPromise,
+    );
   });
+
+  it('should be in the packages list', () =>
+    expect(atom.packages.isPackageLoaded('linter-erb')).toBe(true),
+  );
+
+  it('should be an active package', () =>
+    expect(atom.packages.isPackageActive('linter-erb')).toBe(true),
+  );
 
   describe('checks a file with issues and', () => {
     let editor = null;
-    const badFile = path.join(__dirname, 'fixtures', 'bad.erb');
+    const badFile = path.join(__dirname, 'fixtures', 'bad.html.erb');
     beforeEach(() => {
       waitsForPromise(() =>
         atom.workspace.open(badFile).then((openEditor) => {
@@ -48,7 +66,7 @@ describe('The ERB provider for Linter', () => {
 
   it('finds nothing wrong with a file with rails type blocks', () => {
     waitsForPromise(() => {
-      const blocksFile = path.join(__dirname, 'fixtures', 'rails_blocks.erb');
+      const blocksFile = path.join(__dirname, 'fixtures', 'rails_blocks.html.erb');
       return atom.workspace.open(blocksFile).then(editor =>
         lint(editor).then(messages => expect(messages.length).toBe(0)),
       );
