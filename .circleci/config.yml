@@ -1,7 +1,7 @@
 version: 2
 
 defaults: &defaults
-  working_directory: ~/AtomLinter/linter-erb
+  working_directory: /tmp/linter-erb
   parallelism: 1
   shell: /bin/bash --login
   environment:
@@ -12,7 +12,7 @@ defaults: &defaults
   steps:
     # Restore project state
     - attach_workspace:
-        at: ~/AtomLinter
+        at: /tmp
     - run:
         name: Create VFB for Atom to run in
         command: /usr/local/bin/xvfb_start
@@ -56,7 +56,7 @@ jobs:
           - v2-dependencies
       # Save project state for next steps
       - persist_to_workspace:
-          root: ~/AtomLinter
+          root: /tmp
           paths:
             - linter-erb
   lint:
@@ -66,7 +66,7 @@ jobs:
     steps:
       # Restore project state
       - attach_workspace:
-          at: ~/AtomLinter
+          at: /tmp
       - run:
           name: Node.js Version
           command: node --version
