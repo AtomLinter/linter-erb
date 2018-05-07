@@ -1,25 +1,49 @@
 ### Project specific config ###
 language: ruby
 dist: trusty
+env: ATOM_CHANNEL=stable
+os: linux
+rvm: 2.4
+script: skip
 
-matrix:
+jobs:
   include:
-    - os: linux
-      rvm: 2.3.1
+    - stage: test
+      env: ATOM_CHANNEL=stable
 
-    - os: linux
-      rvm: 2.3.1
+    - stage: test
       env: ATOM_CHANNEL=beta
+
+    - stage: test
+      language: node_js
+      node_js: lts/*
+      install:
+        - npm install
+      script:
+        - commitlint-travis
+
+    - stage: release
+      before_deploy:
+        - export PATH=${PATH}:${HOME}/atom/usr/bin/
+        - nvm install lts/*
+        - node --version
+        - npm --version
+        - npx --version
+      deploy:
+        provider: script
+        skip_cleanup: true
+        script:
+          - npx semantic-release
 
 before_script:
   - ruby --version
   - erb --version
 
 ### Generic setup follows ###
-script:
+install:
   - curl -s -O https://raw.githubusercontent.com/atom/ci/master/build-package.sh
   - chmod u+x build-package.sh
-  - ./build-package.sh
+  - "./build-package.sh"
 
 notifications:
   email:
@@ -44,14 +68,7 @@ addons:
     - libgnome-keyring-dev
     - fakeroot
 
-node_js: lts/*
-
-after_success:
-  # Add apm to the PATH
-  - export PATH=${PATH}:${HOME}/atom/usr/bin/
-
-deploy:
-  provider: script
-  skip_cleanup: true
-  script:
-    - npx semantic-release
+stages:
+  - test
+  - name: release
+    if: (NOT type = pull_request) AND branch = master
