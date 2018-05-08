@@ -1,3 +1,11 @@
+<a name="1.1.1"></a>
+## [1.1.1](https://github.com/AtomLinter/linter-erb/compare/v1.1.0...v1.1.1) (2018-05-08)
+
+
+### Bug Fixes
+
+* **package:** update atom-linter to version 10.0.0 ([#97](https://github.com/AtomLinter/linter-erb/issues/97)) ([0b45847](https://github.com/AtomLinter/linter-erb/commit/0b45847))
+
 # Change Log
 
 ## [v1.1.0](https://github.com/AtomLinter/linter-erb/tree/v1.0.5) (2017-04-11)
