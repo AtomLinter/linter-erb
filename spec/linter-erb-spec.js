@@ -1,10 +1,8 @@
 'use babel';
 
-// eslint-disable-next-line no-unused-vars
-import { it, fit, wait, beforeEach, afterEach } from 'jasmine-fix';
+import { it, beforeEach } from 'jasmine-fix';
 import * as path from 'path';
 import linter from '../lib/index';
-
 
 describe('The ERB provider for Linter', () => {
   const { lint } = linter.provideLinter();
