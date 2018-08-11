@@ -11,7 +11,9 @@ If you would like to contribute enhancements or fixes, please do the following:
 Please note that modifications should follow these coding guidelines:
 
 -   Indent is 2 spaces.
--   Code should pass `eslint` linter.
--   Vertical whitespace helps readability, don’t be afraid to use it.
+-   Code should pass `eslint` linter (`npm run lint`).
+-   Commit messages must follow the [Angular Git Commit Guidelines][angular-commit].
 
 Thank you for helping out!
+
+[angular-commit]: https://github.com/marionebl/commitlint/tree/master/@commitlint/config-conventional
