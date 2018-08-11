@@ -44,7 +44,7 @@ jobs:
   checkout_code:
     <<: *defaults
     docker:
-      - image: circleci/node:latest
+      - image: circleci/node:8
     steps:
       - checkout
       # Restore node_modules from the last build
@@ -62,7 +62,7 @@ jobs:
   lint:
     <<: *defaults
     docker:
-      - image: circleci/node:latest
+      - image: circleci/node:8
     steps:
       # Restore project state
       - attach_workspace:
