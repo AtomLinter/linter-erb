@@ -34,11 +34,11 @@ describe('The ERB provider for Linter', () => {
     const messages = await lint(editor);
 
     expect(messages.length).toBe(1);
-    expect(messages[0].type).toBe('Error');
-    expect(messages[0].html).not.toBeDefined();
-    expect(messages[0].text).toBe(messageText);
-    expect(messages[0].filePath).toBe(badFile);
-    expect(messages[0].range).toEqual([[0, 0], [0, 32]]);
+    expect(messages[0].severity).toBe('error');
+    expect(messages[0].url).not.toBeDefined();
+    expect(messages[0].excerpt).toBe(messageText);
+    expect(messages[0].location.file).toBe(badFile);
+    expect(messages[0].location.position).toEqual([[0, 0], [0, 32]]);
   });
 
   it('finds nothing wrong with a file with rails type blocks', async () => {
