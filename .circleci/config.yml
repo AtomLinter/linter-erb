@@ -15,9 +15,17 @@ defaults: &defaults
     - run:
         name: Create VFB for Atom to run in
         command: /usr/local/bin/xvfb_start
-    - run: mkdir -p $CIRCLE_ARTIFACTS $CIRCLE_TEST_REPORTS
-    - run: sudo apt update
-    - run: sudo apt install ruby-full -y --no-install-suggests --no-install-recommends
+    - run: mkdir --parents $CIRCLE_ARTIFACTS $CIRCLE_TEST_REPORTS
+    - run:
+        name: Install Ruby
+        command: |
+          sudo apt-get update && \
+          sudo apt-get install \
+            --assume-yes --quiet --no-install-suggests --no-install-recommends \
+            ruby-full
+    - run:
+        name: Ruby version
+        command: ruby --version
     - run:
         name: Atom version
         command: ${ATOM_SCRIPT_PATH} --version
