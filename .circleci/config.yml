@@ -1,8 +1,8 @@
 version: 2
 
 defaults: &defaults
-  working_directory: /tmp/linter-erb
   parallelism: 1
+  working_directory: /tmp/project
   shell: /bin/bash --login
   environment:
     CIRCLE_ARTIFACTS: /tmp/circleci-artifacts
@@ -58,7 +58,7 @@ jobs:
       - persist_to_workspace:
           root: /tmp
           paths:
-            - linter-erb
+            - project
   lint:
     <<: *defaults
     docker:
