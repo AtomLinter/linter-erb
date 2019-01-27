@@ -1,8 +1,7 @@
 version: 2
 
 defaults: &defaults
-  working_directory: /tmp/linter-erb
-  parallelism: 1
+  working_directory: /tmp/project
   shell: /bin/bash --login
   environment:
     CIRCLE_ARTIFACTS: /tmp/circleci-artifacts
@@ -16,9 +15,17 @@ defaults: &defaults
     - run:
         name: Create VFB for Atom to run in
         command: /usr/local/bin/xvfb_start
-    - run: mkdir -p $CIRCLE_ARTIFACTS $CIRCLE_TEST_REPORTS
-    - run: sudo apt update
-    - run: sudo apt install ruby-full -y --no-install-suggests --no-install-recommends
+    - run: mkdir --parents $CIRCLE_ARTIFACTS $CIRCLE_TEST_REPORTS
+    - run:
+        name: Install Ruby
+        command: |
+          sudo apt-get update && \
+          sudo apt-get install \
+            --assume-yes --quiet --no-install-suggests --no-install-recommends \
+            ruby-full
+    - run:
+        name: Ruby version
+        command: ruby --version
     - run:
         name: Atom version
         command: ${ATOM_SCRIPT_PATH} --version
@@ -26,17 +33,17 @@ defaults: &defaults
         name: APM version
         command: ${APM_SCRIPT_PATH} --version
     - run:
-        name: Cleaning package
-        command: ${APM_SCRIPT_PATH} clean
-    - run:
         name: Package dependencies
         command: ${APM_SCRIPT_PATH} install
+    - run:
+        name: Cleaning package
+        command: ${APM_SCRIPT_PATH} clean
     - run:
         name: Package specs
         command: ${ATOM_SCRIPT_PATH} --test spec
     # Cache node_modules
     - save_cache:
-        key: v3-dependencies-{{ checksum "package.json" }}
+        key: v4-dependencies-{{ .Branch }}-{{ checksum "package.json" }}-{{ checksum "package-lock.json"}}
         paths:
           - node_modules
 
@@ -44,25 +51,30 @@ jobs:
   checkout_code:
     <<: *defaults
     docker:
-      - image: circleci/node:8
+      - image: circleci/node:lts
     steps:
       - checkout
       # Restore node_modules from the last build
       - restore_cache:
           keys:
-          # Get latest cache for this package.json
-          - v3-dependencies-{{ checksum "package.json" }}
-          # Fallback to the last available cache
-          - v3-dependencies
+          # Get latest cache for this package.json and package-lock.json
+          - v4-dependencies-{{ .Branch }}-{{ checksum "package.json" }}-{{ checksum "package-lock.json"}}
+          # Fallback to the current package.json
+          - v4-dependencies-{{ .Branch }}-{{ checksum "package.json" }}-
+          # Fallback to the last build for this branch
+          - v4-dependencies-{{ .Branch }}-
+          # Fallback to the last available master branch cache
+          - v4-dependencies-master-
+          # Don't go further down to prevent dependency issues from other branches
       # Save project state for next steps
       - persist_to_workspace:
           root: /tmp
           paths:
-            - linter-erb
+            - project
   lint:
     <<: *defaults
     docker:
-      - image: circleci/node:8
+      - image: circleci/node:lts
     steps:
       # Restore project state
       - attach_workspace:
@@ -75,7 +87,7 @@ jobs:
           command: npm --version
       - run:
           name: Install any remaining dependencies
-          command: npm install
+          command: npm ci
       - run:
           name: Lint code
           command: npm run lint
