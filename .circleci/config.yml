@@ -33,11 +33,11 @@ defaults: &defaults
         name: APM version
         command: ${APM_SCRIPT_PATH} --version
     - run:
-        name: Cleaning package
-        command: ${APM_SCRIPT_PATH} clean
-    - run:
         name: Package dependencies
         command: ${APM_SCRIPT_PATH} install
+    - run:
+        name: Cleaning package
+        command: ${APM_SCRIPT_PATH} clean
     - run:
         name: Package specs
         command: ${ATOM_SCRIPT_PATH} --test spec
