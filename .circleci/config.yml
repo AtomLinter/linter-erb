@@ -1,7 +1,6 @@
 version: 2
 
 defaults: &defaults
-  parallelism: 1
   working_directory: /tmp/project
   shell: /bin/bash --login
   environment:
