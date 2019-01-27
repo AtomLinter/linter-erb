@@ -43,7 +43,7 @@ jobs:
   checkout_code:
     <<: *defaults
     docker:
-      - image: circleci/node:8
+      - image: circleci/node:lts
     steps:
       - checkout
       # Restore node_modules from the last build
@@ -66,7 +66,7 @@ jobs:
   lint:
     <<: *defaults
     docker:
-      - image: circleci/node:8
+      - image: circleci/node:lts
     steps:
       # Restore project state
       - attach_workspace:
@@ -79,7 +79,7 @@ jobs:
           command: npm --version
       - run:
           name: Install any remaining dependencies
-          command: npm install
+          command: npm ci
       - run:
           name: Lint code
           command: npm run lint
