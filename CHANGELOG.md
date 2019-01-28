@@ -1,3 +1,10 @@
+## [1.1.3](https://github.com/AtomLinter/linter-erb/compare/v1.1.2...v1.1.3) (2019-01-28)
+
+
+### Bug Fixes
+
+* changes to support linter API v2 ([a12e105](https://github.com/AtomLinter/linter-erb/commit/a12e105))
+
 ## [1.1.2](https://github.com/AtomLinter/linter-erb/compare/v1.1.1...v1.1.2) (2019-01-01)
 
 
