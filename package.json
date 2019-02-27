@@ -101,6 +101,21 @@
     "language-ruby:grammar-used",
     "language-ruby-on-rails:grammar-used"
   ],
+  "renovate": {
+    "extends": [
+      "config:base"
+    ],
+    "semanticCommits": true,
+    "rangeStrategy": "pin",
+    "packageRules": [
+      {
+        "packagePatterns": [
+          "^eslint"
+        ],
+        "groupName": "ESLint packages"
+      }
+    ]
+  },
   "release": {
     "extends": "@semantic-release/apm-config"
   },
