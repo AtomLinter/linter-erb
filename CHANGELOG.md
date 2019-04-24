@@ -1,3 +1,10 @@
+## [1.1.4](https://github.com/AtomLinter/linter-erb/compare/v1.1.3...v1.1.4) (2019-04-24)
+
+
+### Bug Fixes
+
+* **deps:** update dependency atom-package-deps to v5.1.0 ([7910273](https://github.com/AtomLinter/linter-erb/commit/7910273))
+
 ## [1.1.3](https://github.com/AtomLinter/linter-erb/compare/v1.1.2...v1.1.3) (2019-01-28)
 
 
