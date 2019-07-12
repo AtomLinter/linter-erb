@@ -1,6 +1,6 @@
 ### Project specific config ###
 language: ruby
-dist: trusty
+dist: xenial
 env: ATOM_CHANNEL=stable
 os: linux
 rvm: 2.4
@@ -67,6 +67,7 @@ addons:
     - git
     - libgnome-keyring-dev
     - fakeroot
+    - libgconf-2-4
 
 stages:
   - test
