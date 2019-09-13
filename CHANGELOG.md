@@ -1,3 +1,10 @@
+## [1.1.5](https://github.com/AtomLinter/linter-erb/compare/v1.1.4...v1.1.5) (2019-09-13)
+
+
+### Bug Fixes
+
+* update package-lock.json for security ([fb7fd92](https://github.com/AtomLinter/linter-erb/commit/fb7fd92))
+
 ## [1.1.4](https://github.com/AtomLinter/linter-erb/compare/v1.1.3...v1.1.4) (2019-04-24)
 
 
